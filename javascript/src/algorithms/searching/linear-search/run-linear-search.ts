@@ -8,19 +8,19 @@ function runLinearSearch() {
 
     console.log("Array: ", array)
 
-    const input = prompt("\nDigite o valor que deseja buscar")
+    const input = prompt("\nEnter the value you want to search for.")
     const value = Number(input)
 
     if (isNaN(value) || value < 0) {
-        console.log("Por favor, digite um número válido")
+        console.log("Please, Enther a valid value")
         return
     }
 
     const index = linearSearch(array, value)
     if (index === -1) {
-        console.log("Valor não encontrado no array")
+        console.log("Value not found in array")
     } else {
-        console.log(`Índicide: ${index} Valor: ${array[index]}`)
+        console.log(`Index: ${index} Value: ${array[index]}`)
     }
 
 }
