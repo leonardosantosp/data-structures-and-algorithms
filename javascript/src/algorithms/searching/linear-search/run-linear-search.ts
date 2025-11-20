@@ -6,6 +6,7 @@ const array = [0, 5, 6, 9, 34, 67, 54, 66, 89, 10, 15, 33, 22, 11, 98, 100]
 
 function runLinearSearch() {
 
+    console.log("----------------- Linear Search -----------------")
     console.log("Array: ", array)
 
     const input = prompt("\nEnter the value you want to search for.")
