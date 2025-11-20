@@ -28,3 +28,31 @@ All implementations are written in two languages:
 - Prepare for technical interviews and high-level backend challenges
 
 - Develop reusable modules and utilities in both ecosystems
+
+## 🗂️ Repository Structure
+
+```bash
+  data-structures-and-algorithms/
+  │
+  ├── javascript/
+  │   ├── data-structures/
+  │   ├── algorithms/
+  │
+  └── java/
+      ├── data-structures/
+      └── algorithms/
+```
+
+Each implementation includes:
+
+- Clear code
+
+- Explanation of the logic
+
+- Time & space complexity
+
+- Examples / test inputs
+
+## 🤝 Contributions
+
+This is a personal project, but suggestions and improvements are welcome!
