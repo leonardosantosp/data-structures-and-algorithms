@@ -177,9 +177,31 @@ export class Array {
         return fisherYates(this.toNativeArray())
     }
 
-    // TODO: map(callback)
+    map(callback: (value: number, index: number) => number) {
 
-    // TODO: filter(callback)
+        const result = new Array(this.length)
+
+        for (let i = 0; i < this.length; i++) {
+            const newValue = callback(this.array[i], i)
+            result.push(newValue)
+        }
+
+        return result
+    }
+
+    filter(callback: (value: number, index: number) => boolean) {
+        const result = new Array()
+
+        for (let i = 0; i < this.length; i++) {
+            const isFilter = callback(this.array[i], i)
+            if (isFilter) {
+                result.push(this.array[i])
+            }
+        }
+
+        return result
+    }
+
 
     // TODO: reduce(callback, initialValue)
 
