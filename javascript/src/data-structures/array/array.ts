@@ -1,4 +1,5 @@
 import { linearSearch } from "src/algorithms/searching/linear-search/linear-search"
+import { fisherYates } from "src/algorithms/shuffle/fisher-yates"
 
 export class Array {
     private array: { [key: number]: number } = {}
@@ -172,9 +173,9 @@ export class Array {
         return uniqueArray
     }
 
-    // TODO: unique()
-
-    // TODO: shuffle()
+    shuffle() {
+        return fisherYates(this.toNativeArray())
+    }
 
     // TODO: map(callback)
 
