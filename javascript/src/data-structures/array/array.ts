@@ -139,7 +139,7 @@ export class Array {
         }
     }
 
-    slice(start: number, end: number) {
+    slice(start: number, end: number): number[] {
         if (isNaN(start) || isNaN(end) || start < 0 || end < 0) {
             throw new Error("Enter with a valid number")
         }
@@ -147,7 +147,34 @@ export class Array {
         for (let i = 0; i < end; i++) {
             sliceArray[i] = this.array[start + i]
         }
+        return sliceArray
     }
+
+    concat(newArray: number[]) {
+        for (let i = 0; i < newArray.length; i++) {
+            this.array[this.length + i] = newArray[i]
+        }
+        this.length += newArray.length
+        return this.array
+    }
+
+    unique() {
+        const seen = new Set<number>
+        const uniqueArray = new Array(this.length)
+        for (let i = 0; i < this.length; i++) {
+            const value = this.array[i]
+            if (!seen.has(value)) {
+                seen.add(value)
+                uniqueArray.push(value)
+            }
+        }
+
+        return uniqueArray
+    }
+
+    // TODO: unique()
+
+    // TODO: shuffle()
 
     // TODO: map(callback)
 
@@ -156,13 +183,4 @@ export class Array {
     // TODO: reduce(callback, initialValue)
 
     // TODO: forEach(callback)
-
-    // TODO: slice(start,end)
-
-    // TODO: concat(otherArray)
-
-    // TODO: unique()
-
-    // TODO: shuffle()
-
 }
