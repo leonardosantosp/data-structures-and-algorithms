@@ -1,5 +1,6 @@
-import { linearSearch } from "src/algorithms/searching/linear-search/linear-search"
-import { fisherYates } from "src/algorithms/shuffle/fisher-yates"
+import { linearSearch } from "../../algorithms/searching/linear-search/linear-search"
+
+import { fisherYates } from "../../algorithms/shuffle/fisher-yates"
 
 export class Array {
     private array: { [key: number]: number } = {}
@@ -33,7 +34,8 @@ export class Array {
     }
 
     getItem(index: number): number {
-        if (index < 0 || index > this.length) {
+        console.log(index)
+        if (index < 0 || isNaN(index) || index > this.length) {
             throw new Error("Invalid index")
         }
         return this.array[index]
@@ -102,12 +104,12 @@ export class Array {
         for (let i = 0; i < this.length; i++) {
             delete this.array[i]
         }
-        length = 0
+        this.length = 0
     }
 
     contains(value: number): boolean {
         const index = linearSearch(this.toNativeArray(), value)
-        return index ? true : false
+        return index !== -1
     }
 
     indexOf(value: number): number {
@@ -130,7 +132,7 @@ export class Array {
 
     reverse() {
         let left = 0
-        let right = length - 1
+        let right = this.length - 1
         while (left != right) {
             const aux = this.array[left]
             this.array[left] = this.array[right]
@@ -145,7 +147,7 @@ export class Array {
             throw new Error("Enter with a valid number")
         }
         let sliceArray: number[] = []
-        for (let i = 0; i < end; i++) {
+        for (let i = start; i < end; i++) {
             sliceArray[i] = this.array[start + i]
         }
         return sliceArray
@@ -180,7 +182,6 @@ export class Array {
     map(callback: (value: number, index: number) => number) {
 
         const result = new Array(this.length)
-
         for (let i = 0; i < this.length; i++) {
             const newValue = callback(this.array[i], i)
             result.push(newValue)
@@ -202,8 +203,19 @@ export class Array {
         return result
     }
 
+    foreach(callback: (value: number, index: number) => number) {
+        for (let i = 0; i < this.length; i++) {
+            callback(this.array[i], i)
+        }
+    }
 
-    // TODO: reduce(callback, initialValue)
+    reduce<T>(callback: (acc: T, value, index) => T, initalValue: T): T {
+        let acumulator = initalValue
+        for (let i = 0; i < this.length; i++) {
+            acumulator = callback(acumulator, this.array[i], i)
+        }
 
-    // TODO: forEach(callback)
+        return acumulator
+    }
+
 }
