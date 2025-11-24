@@ -34,7 +34,6 @@ export class Array {
     }
 
     getItem(index: number): number {
-        console.log(index)
         if (index < 0 || isNaN(index) || index > this.length) {
             throw new Error("Invalid index")
         }
@@ -77,14 +76,14 @@ export class Array {
     }
 
     removeAt(index: number) {
-        if (index < 0 || index > this.length) {
+        if (index < 0 || index >= this.length) {
             throw new Error("Index out of bounds")
         }
 
         for (let i = index; i < this.length - 1; i++) {
             this.array[i] = this.array[i + 1]
         }
-        delete this.array[this.length]
+        delete this.array[this.length - 1]
         this.length--
     }
 
