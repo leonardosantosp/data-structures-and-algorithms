@@ -130,15 +130,20 @@ export class Array {
     }
 
     reverse() {
+        if (this.length === 0) {
+            return
+        }
         let left = 0
         let right = this.length - 1
-        while (left != right) {
+
+        while (left != right && right > left) {
             const aux = this.array[left]
             this.array[left] = this.array[right]
             this.array[right] = aux
             right--;
             left++;
         }
+        return this.array
     }
 
     slice(start: number, end: number): number[] {
@@ -146,13 +151,13 @@ export class Array {
             throw new Error("Enter with a valid number")
         }
         let sliceArray: number[] = []
-        for (let i = start; i < end; i++) {
+        for (let i = 0; i < end; i++) {
             sliceArray[i] = this.array[start + i]
         }
         return sliceArray
     }
 
-    concat(newArray: number[]) {
+    concat(newArray: Array) {
         for (let i = 0; i < newArray.length; i++) {
             this.array[this.length + i] = newArray[i]
         }
@@ -204,11 +209,12 @@ export class Array {
 
     foreach(callback: (value: number, index: number) => number) {
         for (let i = 0; i < this.length; i++) {
-            callback(this.array[i], i)
+            const newValue = callback(this.array[i], i)
+            this.array[i] = newValue
         }
     }
 
-    reduce<T>(callback: (acc: T, value, index) => T, initalValue: T): T {
+    reduce<T>(callback: (acc: T, value: number, index: number) => T, initalValue: T): T {
         let acumulator = initalValue
         for (let i = 0; i < this.length; i++) {
             acumulator = callback(acumulator, this.array[i], i)
