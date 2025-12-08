@@ -1,9 +1,9 @@
 import promptSync from 'prompt-sync'
-import { Array } from "./array"
+import { DynamicArray } from "./array"
 import { extractArray } from './utils/extract-array'
 
 const prompt = promptSync()
-const array = new Array()
+const array = new DynamicArray()
 
 function runArray() {
 

@@ -2,7 +2,7 @@ import { linearSearch } from "../../algorithms/searching/linear-search/linear-se
 
 import { fisherYates } from "../../algorithms/shuffle/fisher-yates"
 
-export class Array {
+export class DynamicArray {
     private array: { [key: number]: number } = {}
     public capacity: number
     public length: number = 0
@@ -34,7 +34,7 @@ export class Array {
     }
 
     getItem(index: number): number {
-        if (index < 0 || isNaN(index) || index > this.length) {
+        if (index < 0 || isNaN(index) || index >= this.length) {
             throw new Error("Invalid index")
         }
         return this.array[index]
@@ -151,15 +151,15 @@ export class Array {
             throw new Error("Enter with a valid number")
         }
         let sliceArray: number[] = []
-        for (let i = 0; i < end; i++) {
+        for (let i = start; i < end && i < this.length; i++) {
             sliceArray[i] = this.array[start + i]
         }
         return sliceArray
     }
 
-    concat(newArray: Array) {
+    concat(newArray: DynamicArray) {
         for (let i = 0; i < newArray.length; i++) {
-            this.array[this.length + i] = newArray[i]
+            this.array[this.length + i] = newArray.getItem(i)
         }
         this.length += newArray.length
         return this.array
