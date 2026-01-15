@@ -82,11 +82,7 @@ This simulates low-level memory indexing.
 └── javascript/
     src
     ├── algorithms
-    │   ├── searching
-    │   │   └── linear-search
-    │   │       └── linear-search.ts
-    │   ├── shuffle
-    │   │   └── fisher-yates.ts
+    │
     └── data-structures
         └── array
             ├── array.ts
