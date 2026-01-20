@@ -32,7 +32,14 @@ export class Queue {
     }
 
     print() {
-        console.log("Queue: ", this.queue)
+        let index = this.first
+        console.log("------ queue ------")
+        for (let count = 0; count < this.total; count++) {
+            console.log(" ", this.queue[index])
+            index = (index + 1) % this.capacity
+        }
+        console.log("Total: ", this.total)
+        console.log("-------------------")
     }
 
     isFull(): boolean {
